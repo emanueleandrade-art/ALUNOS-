@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Escola Estadual Heloíza Therezinha Murbach Lacava | KPI — Aluno Protagonista</title>
+<style>
+:root{--pink:#e98db6;--pink2:#fff0f6;--lilac:#eee9ff;--mint:#e3f6ed;--blue:#e8f3ff;--peach:#fff3e4;--ink:#3d3544;--muted:#817887;--line:#eee6ef;--white:#fff;--shadow:0 12px 35px #48354d0d;--brand:#d96e9f}
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:#fff;z-index:10}
+body{margin:0;background:#fffafd;color:var(--ink);font:15px/1.5 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}
+.hidden{display:none!important}
+.top{background:#fff;position:sticky;top:env(safe-area-inset-top,0px);z-index:4;border-bottom:1px solid var(--line);padding:13px max(18px,calc((100% - 1120px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;min-width:0}
+#btnExit{flex:none;white-space:nowrap}
+.logo{width:42px;height:42px;flex:none;border-radius:15px;background:linear-gradient(135deg,#ffd7e8,#e4ddff);display:grid;place-items:center;font-size:22px}
+.brand small{display:block;color:var(--muted);font-size:12px;font-weight:500}
+.wrap{max-width:1120px;margin:auto;padding:28px 18px 60px}
+.hero{padding:30px;border-radius:26px;background:linear-gradient(120deg,#fff0f6,#f4f0ff 65%,#effaf4);margin-bottom:22px}
+.eyebrow{color:#ba5d8a;text-transform:uppercase;font-size:11px;font-weight:800;letter-spacing:1.4px}
+.hero h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:9px 0 12px;max-width:780px}
+.hero p{max-width:700px;color:#746a7c;margin:0 0 16px}
+.pills{display:flex;flex-wrap:wrap;gap:9px}
+.pill{display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:99px;background:#fff;font-size:12px;font-weight:700;color:#986183}
+.pill input{border:0;background:transparent;font-size:13px;font-weight:700;color:var(--ink);width:150px;padding:0;outline:none}
+.pill input#anoLet{width:56px}.pill input#atual{width:84px}
+.notice{border-radius:14px;background:#eff7ff;border:1px solid #d8eaff;color:#45627c;padding:12px 15px;font-size:13px;margin:0 0 18px}
+.layout{display:grid;grid-template-columns:235px minmax(0,1fr);gap:18px}
+.sidebar{align-self:start;position:sticky;top:84px;background:#fff;border:1px solid var(--line);border-radius:19px;padding:10px;display:grid;gap:5px}
+.nav{display:block;padding:12px;border-radius:11px;color:#706777;font-weight:650;text-decoration:none}
+.nav.active,.nav:hover{background:var(--pink2);color:#b24e7e}
+.main{min-width:0}
+section{scroll-margin-top:84px}
+h2{font-size:20px;margin:30px 0 4px}
+.main>section:first-child>h2{margin-top:0}
+.lead,.sub,.muted{color:var(--muted)}.lead{margin:0 0 14px}.sub{margin:0 0 10px;font-size:13px}
+.card{background:#fff;border:1px solid var(--line);border-radius:21px;padding:20px;box-shadow:var(--shadow)}
+.card h3{margin:0 0 6px;font-size:1.05rem}.card p{margin:0 0 6px}.card ul{margin:0;padding-left:20px}
+.grid{display:grid;gap:14px}.kpis{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr))}
+.rosa{background:var(--pink2);border-color:#f6d9e7}.lilas{background:var(--lilac);border-color:#e2dbf7}
+.menta{background:var(--mint);border-color:#cdeadc}.pessego{background:var(--peach);border-color:#f6e1c4}
+.kpi .v{font-size:27px;font-weight:800;line-height:1.15}.kpi .l{color:var(--muted);font-size:12.5px}
+.formula{background:#fff;border:1px dashed var(--pink);border-radius:12px;padding:9px 12px;margin:8px 0;font-weight:700;font-size:.88rem}
+.ex{color:var(--muted);font-size:.9rem}
+button{background:#f2edf8;color:#665a70;border-radius:12px;padding:10px 15px;font-weight:750}
+button:hover{filter:brightness(.97)}
+button.main,.btn{background:var(--brand);color:#fff;box-shadow:0 5px 12px #d96e9f26;border-radius:12px;padding:10px 15px;font-weight:750;display:inline-block;text-decoration:none}
+button.secondary,.btn.secondary{background:#f2edf8;color:#665a70;box-shadow:none}
+button.danger{background:#fff0f0;color:#b74e5b}
+button.small,.btn.small{padding:7px 10px;font-size:13px}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+label.f{display:flex;flex-direction:column;font-size:13px;font-weight:700;gap:5px}
+select,input[type=number],input[type=search],input[type=text],input[type=password],input[type=date],textarea{width:100%;border:1px solid #e8dfe9;border-radius:11px;padding:10px 12px;background:#fff;color:var(--ink);outline-color:#e9a0bf}
+textarea{min-height:105px;resize:vertical}
+.chart{position:relative;height:290px}
+.tab{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:520px}
+th,td{padding:10px;text-align:left;border-bottom:1px solid #f2edf3;font-size:.92rem}th{background:var(--pink2);color:#8e4d6f}
+.bad{color:#b74e5b;font-weight:700}.ok{color:#326f56;font-weight:700}
+.badge{display:inline-block;padding:2px 9px;border-radius:99px;font-size:11px;font-weight:800;background:#e6f7ee;color:#39795c;margin-right:4px}
+.badge.n{background:#f4effb;color:#77628e}.badge.o{background:#fff1dc;color:#916a2e}
+.obs{background:var(--peach);border:1px solid #f6e1c4;border-left:6px solid #e0a35f;border-radius:16px;padding:18px 22px;margin-top:30px}
+.obs h3{margin:0 0 6px;color:#916a2e}
+td input[type=number]{width:90px;padding:6px 8px}
+code{background:#f4effb;padding:1px 6px;border-radius:6px}
+.footer{text-align:center;color:#9a909e;font-size:12px;margin-top:34px}
+:focus-visible{outline:3px solid #e9a0bf;outline-offset:2px}
+.field{display:grid;gap:6px;margin-bottom:13px}.field label{font-weight:700;font-size:13px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}.full{grid-column:1/-1}
+.smalltext{font-size:12px;color:var(--muted)}
+.list{display:grid;gap:12px}
+.item{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}
+.item h3{margin:7px 0 4px}.item p{margin:5px 0;color:#746b7b;white-space:pre-wrap}
+.itop{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.ifoot{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:13px;padding-top:11px;border-top:1px solid #f2edf3}
+.empty{padding:28px;text-align:center;border:1px dashed #e6dce8;border-radius:15px;color:var(--muted)}
+.linkbox{display:flex;gap:8px;flex-wrap:wrap}.linkbox input{flex:1;min-width:180px}
+.color-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.color-field{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:12px;padding:10px}
+.color-field input[type=color]{width:48px;height:38px;border:0;background:transparent;padding:0;cursor:pointer}
+.color-preview{border-radius:14px;padding:14px;border:1px solid var(--line);margin:5px 0 14px}
+#publicView{--cp:#d96e9f;--cb:#fff0f6}
+#publicView .btn:not(.secondary){background:var(--cp)}
+#publicView .card{border-color:color-mix(in srgb,var(--cp) 18%,var(--line))}
+#publicView .item{border-color:color-mix(in srgb,var(--cp) 20%,var(--line))}
+.vote button{background:color-mix(in srgb,var(--cp,#fceaf2) 15%,white);color:var(--cp,#b44f7d);font-weight:800}
+.vote button.voted{background:#dff4e9;color:#326f56}
+.modal{position:fixed;inset:0;background:#3d354466;display:grid;place-items:center;z-index:50;padding:18px}.modal .card{width:min(420px,100%)}.modal input{margin:10px 0 4px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.sidebar{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero{padding:22px}.wrap{padding:18px 12px 40px}.top{padding:11px 15px;position:relative;top:auto;flex-wrap:wrap}.brand{font-size:13px;flex:1 1 100%}section{scroll-margin-top:16px}.pill input{width:120px}.formgrid,.color-options{grid-template-columns:1fr}.full{grid-column:auto}}
+@media print{.top,.sidebar,.notice,.footer,button{display:none!important}body{background:#fff}.layout{display:block}}
+</style>
+
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#176b52">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Aluno Protagonista">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><div class="logo">🌷</div><div>Escola Estadual Heloíza Therezinha Murbach Lacava<small>KPI · Aluno Protagonista · participação estudantil</small></div></div>
+  <button id="btnExit" class="secondary small hidden">Sair da área restrita</button>
+</header>
+
+<div class="wrap">
+
+<!-- ENTRADA (equipe escolar) -->
+<div id="gate">
+  <div class="hero">
+    <span class="eyebrow">Escola Estadual Heloíza Therezinha Murbach Lacava · Gestão pedagógica</span>
+    <h1>Índice de Participação e Protagonismo dos Estudantes</h1>
+    <p>Área exclusiva da equipe escolar para criar campanhas, revisar propostas e acompanhar a participação dos alunos.</p>
+  </div>
+  <div class="notice"><b>Acesso dos alunos:</b> os estudantes não entram por esta página. Eles acessam somente a página específica da campanha, pelo link que a escola compartilhar.</div>
+  <div class="card" style="max-width:560px"><h3>🏫 Área administrativa</h3><p class="ex">Crie campanhas, aprove ou recuse ideias enviadas e acompanhe as votações.</p><div class="row"><button class="main" id="btnEnter">Entrar no painel administrativo →</button></div></div>
+  <div class="footer">Gestão de campanhas e protagonismo estudantil.</div>
+</div>
+
+<!-- ÁREA ADMINISTRATIVA -->
+<div id="adminView" class="hidden">
+  <div class="hero">
+    <span class="eyebrow">Escola Estadual Heloíza Therezinha Murbach Lacava · Gestão pedagógica</span>
+    <h1>Índice de Participação e Protagonismo dos Estudantes</h1>
+    <p>Acompanhe campanhas, ideias enviadas, aprovações e votações, do 6º ano do Ensino Fundamental à 3ª série do Ensino Médio.</p>
+    <div class="pills">
+      <span class="pill">📅 Ano letivo <input id="anoLet" placeholder="2026"></span>
+      <span class="pill">👤 Responsável <input id="resp" placeholder="Coordenação pedagógica"></span>
+      <span class="pill">🔄 Atualizado em <input id="atual" readonly></span>
+    </div>
+  </div>
+  <div class="notice"><b>Sobre os dados:</b> as campanhas e ideias ficam salvas somente neste navegador e não são enviadas a nenhum servidor. Ao compartilhar ou imprimir, proteja os nomes dos estudantes e use apenas com quem deve ter acesso (LGPD).</div>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidenav" aria-label="Seções">
+      <a class="nav active" href="#sobre">📘 Sobre o indicador</a>
+      <a class="nav" href="#painel">📊 Painel</a>
+      <a class="nav" href="#criar">✨ Criar campanha</a>
+      <a class="nav" href="#campanhas">📚 Minhas campanhas</a>
+      <a class="nav" href="#moderar">🛡️ Moderar ideias</a>
+      <a class="nav" href="#metas">🎯 Metas</a>
+      <a class="nav" href="#acoes">🤝 Ações</a>
+      <a class="nav" href="#obs">💬 Observação</a>
+    </aside>
+
+    <div class="main">
+      <section id="sobre">
+        <h2>Sobre o indicador</h2>
+        <p class="lead">Mostra quanto os estudantes participam da vida da escola por meio de campanhas e ideias, para fortalecer o protagonismo e a escuta ativa.</p>
+        <div class="grid g3">
+          <div class="card menta"><h3>💡 Participação</h3><div class="formula">Ideias por campanha = ideias recebidas ÷ campanhas</div><p class="ex">Mostra o engajamento dos estudantes em cada ação lançada.</p></div>
+          <div class="card lilas"><h3>🗳️ Engajamento</h3><div class="formula">Votos por ideia = votos ÷ ideias aprovadas</div><p class="ex">Mostra se a comunidade escolar lê e apoia as propostas publicadas.</p></div>
+          <div class="card pessego"><h3>🛡️ Retorno da escola</h3><div class="formula">Analisadas (%) = (aprovadas + recusadas) ÷ recebidas × 100</div><p class="ex">Mostra se a escola dá retorno às ideias enviadas.</p></div>
+        </div>
+        <p class="ex" style="margin-top:10px"><b>Fontes e periodicidade:</b> campanhas e ideias registradas nesta página; acompanhamento semanal durante cada campanha e análise no conselho de classe e no grêmio estudantil.</p>
+      </section>
+
+      <section id="painel">
+        <h2 style="margin-top:34px">Painel</h2>
+        <div class="card"><div class="filters">
+          <label class="f">Campanha<select id="fCamp"></select></label>
+        </div></div>
+        <h2>Visão geral</h2><div class="grid kpis" id="kpis"></div>
+        <h2>Destaques</h2><div class="grid kpis" id="hilo"></div>
+        <h2>Comparativos</h2>
+        <div class="grid g2">
+          <div class="card"><h3>Ideias por campanha</h3><p class="sub">Ideias recebidas, aprovadas e aguardando revisão.</p><div class="chart"><canvas id="c1"></canvas></div></div>
+          <div class="card"><h3>Votos por campanha</h3><p class="sub">Total de votos nas ideias aprovadas.</p><div class="chart"><canvas id="c2"></canvas></div></div>
+        </div>
+        <h2>Ranking das campanhas</h2><div class="card tab"><table id="tbCamp"></table></div>
+        <h2>Ideias mais votadas</h2><p class="lead">As dez ideias aprovadas com mais votos.</p><div class="card tab"><table id="tbTop"></table></div>
+      </section>
+
+      <section id="criar">
+        <h2 style="margin-top:34px">Criar campanha</h2>
+        <p class="lead">Cada campanha tem sua própria página e seu próprio link para os alunos.</p>
+        <div class="card" style="margin-bottom:14px"><label class="f" for="baseUrl">Endereço onde esta página será publicada
+          <input type="text" id="baseUrl" placeholder="https://seusite.com.br/index.html" autocomplete="off"></label>
+          <p class="smalltext" id="baseNote" style="margin:8px 0 0;font-weight:700"></p>
+          <p class="smalltext" style="margin:6px 0 0">Opcional. Só preencha se o arquivo já estiver publicado em um endereço; deixe em branco para usar o endereço desta página.</p></div>
+        <div class="card" style="margin-bottom:14px"><h3>🚀 Publicação automática no GitHub</h3>
+          <p class="ex">Configure uma vez. Depois disso, cada campanha criada gera sozinha a sua própria página, com link próprio, sem você precisar mexer no GitHub.</p>
+          <div class="field"><label for="ghToken">Cole aqui o token do GitHub</label><input id="ghToken" type="password" autocomplete="off" placeholder="github_pat_..."></div>
+          <p class="smalltext" style="margin:8px 0">Vai publicar em: <b id="ghTarget">—</b></p>
+          <details style="margin:6px 0 10px"><summary class="smalltext" style="cursor:pointer;font-weight:700">Alterar usuário, repositório ou branch (normalmente não precisa)</summary>
+            <div class="formgrid" style="margin-top:8px">
+              <div class="field"><label for="ghOwner">Usuário do GitHub</label><input id="ghOwner" type="text" autocomplete="off" placeholder="seu-usuario"></div>
+              <div class="field"><label for="ghRepo">Repositório</label><input id="ghRepo" type="text" autocomplete="off" placeholder="nome-do-repositorio"></div>
+              <div class="field"><label for="ghBranch">Branch</label><input id="ghBranch" type="text" autocomplete="off" placeholder="main"></div>
+            </div></details>
+          <p class="smalltext">O token fica salvo somente neste navegador. Use um token exclusivo deste repositório (permissão <b>Contents: Read and write</b>) e não o compartilhe com ninguém.</p>
+          <div class="row"><button class="main" type="button" id="btnGhSave">Conectar ao GitHub</button><button class="secondary" type="button" id="btnGhClear">Remover token</button></div>
+          <div id="ghStatus" class="smalltext" style="margin-top:8px;font-weight:700"></div></div>
+        <div class="card">
+          <form id="createForm" novalidate><div class="formgrid">
+            <div class="field full"><label for="cTitle">Nome da campanha *</label><input id="cTitle" required placeholder="Ex.: Outubro Rosa — Aluno Protagonista"></div>
+            <div class="field"><label for="cEmoji">Emoji da campanha</label><select id="cEmoji"><option value="🌷">🌷 Flor</option><option value="💗">💗 Coração</option><option value="🌎">🌎 Meio ambiente</option><option value="♻️">♻️ Reciclagem</option><option value="📚">📚 Leitura e estudos</option><option value="🎨">🎨 Arte e criatividade</option><option value="🤝">🤝 União e respeito</option><option value="🧠">🧠 Saúde e bem-estar</option><option value="🩷">🩷 Outubro Rosa / cuidado</option><option value="✨">✨ Ideias e protagonismo</option><option value="🎗️">🎗️ Conscientização</option><option value="🏆">🏆 Desafio e conquista</option><option value="🎉">🎉 Evento e celebração</option></select></div>
+            <div class="field"><label for="cEmojiCustom">Ou digite seu próprio emoji</label><input id="cEmojiCustom" maxlength="12" placeholder="Ex.: 🦋 🌻 💙"></div>
+            <div class="field full"><label for="cDesc">Apresentação e objetivo *</label><textarea id="cDesc" required placeholder="Explique a campanha, por que ela é importante e o que os alunos podem sugerir."></textarea></div>
+            <div class="field"><label for="cStart">Início das participações</label><input id="cStart" type="date"></div>
+            <div class="field"><label for="cEnd">Encerramento</label><input id="cEnd" type="date"></div>
+            <div class="field"><label for="cAudience">Público participante</label><select id="cAudience"><option>Toda a escola</option><option>Ensino Fundamental</option><option>Ensino Médio</option><option>Turmas específicas</option></select></div>
+            <div class="field"><label for="cVote">Votação</label><select id="cVote"><option value="yes">Ativada após aprovação das ideias</option><option value="no">Desativada</option></select></div>
+            <div class="field full"><label>Personalizar as cores desta campanha</label>
+              <div class="color-options">
+                <label class="color-field" for="cColorPrimary"><input id="cColorPrimary" type="color" value="#d96e9f"><span><b>Cor principal</b><br><span class="smalltext">Botões e destaques</span></span></label>
+                <label class="color-field" for="cColorBg"><input id="cColorBg" type="color" value="#fff0f6"><span><b>Cor de fundo</b><br><span class="smalltext">Fundo da apresentação</span></span></label>
+              </div>
+              <div id="colorPreview" class="color-preview" style="margin-top:12px"><b>Prévia da campanha</b><br><span class="smalltext">As cores escolhidas serão usadas na página dos alunos.</span><div style="margin-top:10px"><span id="colorSample" class="btn small">Exemplo de botão</span></div></div>
+            </div>
+            <div class="field full"><label for="cWhats">WhatsApp da escola para receber as ideias (com DDD)</label><input id="cWhats" type="text" inputmode="tel" placeholder="Ex.: 19 99999-9999" autocomplete="off"><span class="smalltext">Quando o aluno enviar uma ideia, o WhatsApp abre com a mensagem pronta para este número. Se deixar em branco, o aluno escolhe o contato.</span></div>
+            <div class="field full"><label for="cRules">Orientações para os alunos</label><textarea id="cRules" placeholder="Ex.: envie uma ideia respeitosa, viável e relacionada ao tema. A escola analisará as propostas antes de publicá-las."></textarea></div>
+            <div class="field full"><label for="cFile">Importar arquivo de apoio (opcional)</label><input id="cFile" type="file" accept=".csv,.txt,.json,.pdf,.png,.jpg,.jpeg"><span id="cFileStatus" class="smalltext">Nenhum arquivo selecionado.</span><span class="smalltext">O arquivo fica disponível na página da campanha (máximo de 2 MB nesta versão).</span></div>
+          </div>
+          <div class="row"><button class="main" type="button" id="btnCreate">Criar campanha e gerar link →</button></div><div id="createStatus" role="status" aria-live="polite" style="margin-top:10px;font-weight:700;font-size:.95rem"></div></form>
+          <div id="newLink" class="hidden"><hr style="border:0;border-top:1px solid var(--line);margin:18px 0"><h3>Link da campanha criado</h3><p class="muted">Copie o link e compartilhe com os alunos. Nesta versão, o link funciona no mesmo navegador/dispositivo.</p>
+            <p id="linkWarn" class="smalltext bad hidden" style="margin:0 0 10px"></p><p id="liveStatus" class="smalltext" style="margin:0 0 10px;font-weight:700"></p><div class="linkbox"><input id="linkOutput" readonly placeholder="Informe o endereço da página acima para gerar o link"><button class="main" id="btnCopyNew">Copiar link</button><button class="secondary" id="btnOpenNew">Abrir página</button><button class="main" id="btnTabNew">Abrir em nova aba</button><button class="secondary" id="btnFileNew">Baixar arquivo da campanha</button></div></div>
+        </div>
+      </section>
+
+      <section id="campanhas">
+        <h2 style="margin-top:34px">Minhas campanhas</h2>
+        <p class="lead">Cada campanha tem link próprio. Arquive as que já terminaram.</p>
+        <div id="allCampaigns" class="list"></div>
+      </section>
+
+      <section id="moderar">
+        <h2 style="margin-top:34px">Moderar ideias</h2>
+        <p class="lead">As propostas ficam privadas até a escola aprová-las. Revise o conteúdo e os dados pessoais antes de clicar em “Aprovar e publicar”.</p>
+        <div class="card" style="margin-bottom:14px"><h3>📥 Importar ideias recebidas pelo WhatsApp</h3>
+          <p class="ex">Cole aqui a mensagem que o aluno enviou, inclusive a linha que começa com [[IDEIA:. Pode colar várias mensagens de uma vez.</p>
+          <textarea id="impText" placeholder="Cole as mensagens do WhatsApp aqui"></textarea>
+          <div class="row"><button class="main" id="btnImp" type="button">Importar para moderação</button></div>
+          <div id="impStatus" class="smalltext" style="margin-top:8px;font-weight:700"></div></div>
+        <div id="modStatus" class="smalltext" style="margin:0 0 10px;font-weight:700"></div><div id="moderationList" class="list"></div>
+      </section>
+
+      <section id="metas">
+        <h2 style="margin-top:34px">Metas</h2>
+        <p class="lead">Defina metas com base nos dados reais da escola. Como ponto de partida, a sugestão é aumentar em 20% as ideias por campanha e os votos por ideia, e analisar 100% das ideias recebidas.</p>
+        <div class="notice" id="metaNote" style="margin-bottom:12px"></div>
+        <div class="card tab"><table>
+          <thead><tr><th>Indicador</th><th>Resultado atual</th><th>Meta</th><th>Situação</th></tr></thead>
+          <tbody>
+            <tr><td>Ideias por campanha</td><td id="a_ideias">—</td><td><input type="number" id="m_ideias" min="0"></td><td id="s_ideias">—</td></tr>
+            <tr><td>Votos por ideia aprovada</td><td id="a_votos">—</td><td><input type="number" id="m_votos" min="0"></td><td id="s_votos">—</td></tr>
+            <tr><td>Ideias analisadas pela escola (%)</td><td id="a_anal">—</td><td><input type="number" id="m_anal" min="0" max="100"></td><td id="s_anal">—</td></tr>
+          </tbody></table></div>
+        <div class="row"><button class="main" id="btnMeta">Sugerir metas</button></div>
+      </section>
+
+      <section id="acoes">
+        <h2 style="margin-top:34px">Ações estratégicas de acompanhamento</h2>
+        <div class="grid g3" style="margin-top:12px">
+          <div class="card menta"><h3>Escuta e divulgação</h3><ul><li>Apresentar cada campanha em sala e nas redes da escola.</li><li>Incentivar turmas com pouca participação.</li><li>Dar espaço ao grêmio estudantil.</li></ul></div>
+          <div class="card lilas"><h3>Retorno rápido</h3><ul><li>Analisar as ideias em até uma semana.</li><li>Explicar aos estudantes por que uma ideia foi recusada.</li><li>Levar as mais votadas ao conselho de classe.</li></ul></div>
+          <div class="card pessego"><h3>Reconhecimento</h3><ul><li>Valorizar ideias aprovadas e executadas.</li><li>Mostrar o resultado das campanhas às famílias.</li><li>Convidar autores para ajudar na realização.</li></ul></div>
+        </div>
+      </section>
+
+      <div class="obs" id="obs">
+        <h3>Observação pedagógica</h3>
+        <p style="margin:0">Os números indicam onde olhar, não quem culpar. Poucas ideias podem refletir falta de divulgação, receio de se expor ou pouco tempo, e não desinteresse. A votação é consultiva: confirme com professores, estudantes e famílias antes de decidir o que executar.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer">Escola Estadual Heloíza Therezinha Murbach Lacava · Gestão pedagógica e protagonismo estudantil.</div>
+</div>
+
+<!-- PÁGINA DOS ALUNOS -->
+<div id="publicView" class="hidden">
+  <div id="publicCampaign"></div>
+  <div class="grid g2" style="margin-top:18px">
+    <div class="card"><h3>💡 Compartilhe sua ideia</h3><p class="ex">Conte sua proposta com clareza. Ela só aparecerá no mural depois da revisão da escola.</p>
+      <form id="ideaForm" novalidate><input id="ideaCampaignId" type="hidden">
+        <div class="field"><label for="ideaName">Como podemos chamar você? *</label><input id="ideaName" required maxlength="60" placeholder="Nome ou apelido autorizado pela escola"></div>
+        <div class="field"><label for="ideaClass">Sala / turma *</label><input id="ideaClass" required maxlength="40" placeholder="Ex.: 8º A, 2º B ou Sala 12"></div>
+        <div class="field"><label for="ideaTitle">Título da ideia *</label><input id="ideaTitle" required maxlength="100" placeholder="Ex.: Mural de mensagens de apoio"></div>
+        <div class="field"><label for="ideaBody">Explique sua proposta *</label><textarea id="ideaBody" required maxlength="1500" placeholder="O que você sugere? Como poderia funcionar?"></textarea></div>
+        <div class="field"><label for="ideaImage">Imagem da campanha (opcional)</label><input id="ideaImage" type="file" accept="image/png,image/jpeg,image/webp,image/gif"><span class="smalltext">PNG, JPG ou WEBP; até 5 MB. A imagem será reduzida para facilitar o envio. Não envie fotos de alunos sem autorização.</span></div>
+        <button class="btn" type="submit" id="btnIdea">Enviar para análise →</button>
+        <p class="smalltext">Não inclua telefone, endereço, informações íntimas ou dados de outras pessoas.</p>
+      </form>
+      <div id="ideaSuccess" class="notice hidden" style="margin:12px 0 0"></div>
+    </div>
+    <div class="card"><h3>🗳️ Ideias da comunidade <span class="badge" style="margin-left:6px">Aprovadas</span></h3><p class="ex">Leia as propostas e vote naquelas que você gostaria de apoiar.</p><div id="publicIdeas" class="list"></div></div>
+  </div>
+  <div class="notice" style="margin-top:18px">A votação é consultiva: as ideias mais votadas serão levadas à análise da equipe escolar e, quando necessário, da secretaria responsável. A votação não garante que a proposta será executada.</div>
+  <div class="footer">Escola Estadual Heloíza Therezinha Murbach Lacava · Aluno Protagonista.</div>
+</div>
+
+</div>
+
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true"><div class="card"><h3 id="mTitle"></h3><p class="ex" id="mText"></p><input id="mInput" type="password" class="hidden" autocomplete="off"><div class="row"><button class="main" id="mOk">OK</button><button class="secondary hidden" id="mCancel">Cancelar</button></div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+const ORIGINAL_HTML='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+const STORE='vivaAlunoProtagonista_v1';
+const $=id=>document.getElementById(id);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=(v,d=1)=>v==null||isNaN(v)?'—':v.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
+const fdate=d=>{if(!d)return'';try{return new Date(d+'T12:00:00').toLocaleDateString('pt-BR')}catch(e){return d}};
+function ask(title,text,o={}){return new Promise(res=>{const m=$('modal'),i=$('mInput'),ok=$('mOk'),ca=$('mCancel');
+  $('mTitle').textContent=title;$('mText').textContent=text||'';
+  i.classList.toggle('hidden',!o.input);i.type=o.password?'password':'text';i.value=o.value||'';i.readOnly=!!o.readonly;
+  ca.classList.toggle('hidden',!o.cancel);m.classList.remove('hidden');
+  setTimeout(()=>{if(o.input){i.focus();if(o.readonly)i.select()}else ok.focus()},50);
+  const done=v=>{m.classList.add('hidden');ok.onclick=ca.onclick=i.onkeydown=null;res(v)};
+  ok.onclick=()=>done(o.input?i.value:true);ca.onclick=()=>done(null);
+  i.onkeydown=e=>{if(e.key==='Enter')ok.onclick();if(e.key==='Escape')done(null)}})}
+const say=msg=>ask('Aviso',msg);
+const showLink=t=>ask('Link da campanha','Selecione e copie o link abaixo:',{input:true,value:t,readonly:true});
+window.addEventListener('error',ev=>{try{say('Erro na página: '+ev.message)}catch(_){}});
+const uid=()=>'camp-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7);
+function loadData(){try{return JSON.parse(localStorage.getItem(STORE))||{campaigns:[],ideas:[],votes:[]}}catch(e){return{campaigns:[],ideas:[],votes:[]}}}
+let data=loadData(),currentCampaign=null,lastLink='',adminUnlocked=false,charts={};
+let memOnly=false;
+function persist(){try{localStorage.setItem(STORE,JSON.stringify(data))}catch(e){
+  let ok=false;try{localStorage.setItem('__t','1');localStorage.removeItem('__t');ok=true}catch(e2){}
+  if(ok)throw e;
+  if(!memOnly){memOnly=true;setTimeout(()=>say('Este navegador está bloqueando o armazenamento. As campanhas funcionam só enquanto esta página estiver aberta. Abra o arquivo direto no navegador para que fiquem salvas.'),400)}}}
+function save(){persist();renderAll()}
+
+/* ---------- publicação automática no GitHub ---------- */
+const ghCfg=()=>({owner:(store.get('apGhOwner')||'').trim(),repo:(store.get('apGhRepo')||'').trim(),branch:((store.get('apGhBranch')||'main').trim())||'main',token:(store.get('apGhToken')||'').replace(/[\s"'“”]/g,'')});
+const ghReady=()=>{const k=ghCfg();return !!(k.owner&&k.repo&&k.token)};
+function b64utf8(str){const by=new TextEncoder().encode(str);let bin='';for(let i=0;i<by.length;i+=0x8000)bin+=String.fromCharCode.apply(null,by.subarray(i,i+0x8000));return btoa(bin)}
+async function ghFetch(method,url,body){const k=ghCfg();
+  const r=await fetch(url,{method,cache:'no-store',headers:Object.assign({'Authorization':'Bearer '+k.token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'},body?{'Content-Type':'application/json'}:{}),body:body?JSON.stringify(body):undefined});
+  let j=null;try{j=await r.json()}catch(_){}return{status:r.status,ok:r.ok,json:j}}
+const ghRepoUrl=()=>{const k=ghCfg();return 'https://api.github.com/repos/'+encodeURIComponent(k.owner)+'/'+encodeURIComponent(k.repo)};
+const ghFileUrl=f=>ghRepoUrl()+'/contents/'+f.split('/').map(encodeURIComponent).join('/');
+function ghMsg(r){const k=ghCfg(),alvo=k.owner+'/'+k.repo,m=r.json&&r.json.message?r.json.message:'';
+  if(r.status===401)return 'O token não foi aceito (inválido, copiado incompleto ou vencido). Gere um novo token e cole de novo.';
+  if(r.status===403)return 'O token não tem permissão para escrever. Ao gerar o token, em Permissions → Contents, escolha “Read and write”. '+(m?'('+m+')':'');
+  if(r.status===404)return 'O GitHub não encontrou “'+alvo+'” para este token. Confira se: (1) o repositório se chama exatamente “'+k.repo+'”; (2) ao criar o token você escolheu ESTE repositório em “Only select repositories”; (3) a branch “'+k.branch+'” existe.';
+  if(r.status===409||r.status===422)return 'O GitHub recusou por conflito. Tente de novo em alguns segundos. '+(m?'('+m+')':'');
+  return 'Erro do GitHub ('+r.status+'). '+m}
+function pageDir(){const b=baseUrl();if(!b)return '';const u=new URL(b);if(!/\/$/.test(u.pathname)&&!/\.[a-z0-9]+$/i.test(u.pathname))u.pathname+='/';return u.href}
+let pubQueue=Promise.resolve();
+function publishCampaign(c){const p=pubQueue.catch(()=>{}).then(()=>publishNow(c));pubQueue=p;return p}
+async function publishNow(c){
+  const dir=pageDir();
+  if(!dir)throw new Error('Abra o painel pelo endereço do site (https://...github.io/...) e não pelo arquivo salvo no aparelho.');
+  if(!ghReady())throw new Error('Configure a publicação automática (usuário, repositório e token do GitHub).');
+  const k=ghCfg();
+  const slug=(c.title||'campanha').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40)||'campanha';
+  const file=c.pageFile||('campanha-'+slug+'-'+String(c.id).slice(-5)+'.html');
+  const html=studentFileHtml(c);
+  const cur=await ghFetch('GET',ghFileUrl(file)+'?ref='+encodeURIComponent(k.branch));
+  let sha;if(cur.ok&&cur.json&&cur.json.sha)sha=cur.json.sha;else if(cur.status!==404)throw new Error(ghMsg(cur));
+  const put=await ghFetch('PUT',ghFileUrl(file),Object.assign({message:'Campanha: '+(c.title||slug),content:b64utf8(html),branch:k.branch},sha?{sha}:{}));
+  if(!put.ok)throw new Error(ghMsg(put));
+  c.pageFile=file;c.pageUrl=new URL(file,dir).href;persist();return c.pageUrl}
+function watchLive(url){const el=$('liveStatus');if(!el)return;let same=false;try{same=new URL(url).origin===location.origin}catch(_){}
+  if(!same){el.style.color='#817887';el.textContent='⏳ O GitHub leva de 1 a 2 minutos para colocar a página no ar.';return}
+  let n=0;el.style.color='#817887';el.textContent='⏳ Colocando a página no ar (1 a 2 minutos)...';
+  const tick=async()=>{n++;try{const r=await fetch(url+'?_='+Date.now(),{cache:'no-store'});if(r.ok){el.style.color='#326f56';el.textContent='✔ Página no ar! O link já pode ser enviado aos alunos.';return}}catch(_){}
+    if(n<30)setTimeout(tick,8000);else{el.textContent='Ainda não apareceu. Aguarde mais um pouco e teste o link.'}};
+  setTimeout(tick,6000)}
+async function autoRepublish(cid){const c=data.campaigns.find(x=>x.id===cid),st=$('modStatus');if(!c||!c.pageFile||!ghReady()||!st)return;
+  st.style.color='#817887';st.textContent='Atualizando a página da campanha “'+c.title+'”...';
+  try{await publishCampaign(c);renderAll();st.style.color='#326f56';st.textContent='✔ Página atualizada. As ideias aprovadas aparecem para os alunos em 1 a 2 minutos.'}
+  catch(err){st.style.color='#b74e5b';st.textContent='✖ Não consegui atualizar a página: '+err.message}}
+
+/* ---------- navegação ---------- */
+function setHash(h){try{history.pushState({},'',location.pathname+location.search+h)}catch(e){try{location.hash=h}catch(e2){}}}
+let studentMode=false,studentHash='',lastCampId='';
+function showOnly(w){['gate','adminView','publicView'].forEach(x=>{const el=$(x);if(el)el.classList.toggle('hidden',x!==w)});const be=$('btnExit');if(be)be.classList.toggle('hidden',w!=='adminView')}
+function route(){const h=decodeURIComponent(location.hash.slice(1));
+  if(h.startsWith('campanha='))showCampaign(h.slice(9),true);
+  else if(adminUnlocked&&(h===''||h==='escola'||!h.startsWith('campanha='))&&!$('adminView').classList.contains('hidden')){}
+  else showOnly('gate')}
+function goHome(){adminUnlocked=false;setHash('');showOnly('gate')}
+async function enterAdmin(){
+  const saved=store.get('vivaAdminPin');
+  if(saved===null){
+    const np=await ask('Criar senha','Crie uma senha (mínimo 4 caracteres) para proteger o painel neste navegador. Isso não substitui uma autenticação online.',{input:true,password:true,cancel:true});
+    if(np===null)return;
+    if(np.trim().length<4){await say('Use uma senha com pelo menos 4 caracteres.');return}
+    store.set('vivaAdminPin',np.trim())}
+  else{
+    const pin=await ask('Área restrita','Digite a senha de acesso da equipe escolar:',{input:true,password:true,cancel:true});
+    if(pin===null)return;
+    if(pin!==saved){await say('Senha incorreta.');return}}
+  adminUnlocked=true;setHash('#escola');showOnly('adminView');window.scrollTo(0,0);renderAll()}
+
+/* ---------- campanhas ---------- */
+const validBase=u=>/^https?:\/\//i.test((u||'').trim());
+function baseUrl(){
+  const el=$('baseUrl'),typed=el?el.value.trim():'';
+  const raw=typed||((location.protocol==='http:'||location.protocol==='https:')?location.origin+location.pathname:'');
+  if(!raw)return '';
+  try{const u=new URL(raw);if(!/^https?:$/.test(u.protocol))return '';u.hash='';u.search='';return u.href}
+  catch(e){return ''}
+}
+const b64e=o=>btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+const b64d=t=>JSON.parse(decodeURIComponent(escape(atob(t.replace(/-/g,'+').replace(/_/g,'/')))));
+function payload(c){const ap=data.ideas.filter(i=>i.campaignId===c.id&&i.status==='approved').slice(-20).map(i=>({t:i.title,n:i.name,s:i.classroom,b:i.body}));
+  return b64e({v:1,id:c.id,t:c.title,e:c.emoji,d:c.desc,a:c.start,z:c.end,u:c.audience,r:c.rules,p:c.colorPrimary,g:c.colorBg,w:c.whats||'',x:c.active===false?1:0,i:ap})}
+const linkFor=c=>{if(c.pageUrl)return c.pageUrl;const b=baseUrl();return b?b+'?c='+payload(c):''};
+function studentFileHtml(c){const tag='<script>window.__CAMPAIGN__='+JSON.stringify(payload(c))+';<\/script>\n';const k=ORIGINAL_HTML.indexOf('chart.umd.min.js'),i=ORIGINAL_HTML.indexOf('<script>',k<0?0:k);let h=ORIGINAL_HTML.slice(0,i)+tag+ORIGINAL_HTML.slice(i);const tt=((c.emoji||'')+' '+(c.title||'Campanha')).trim(),dd=String(c.desc||'').slice(0,160);
+  h=h.replace(/<title>[\s\S]*?<\/title>/,()=>'<title>'+esc(tt)+' | Aluno Protagonista</title>\n<meta property="og:title" content="'+esc(tt)+'"><meta property="og:description" content="'+esc(dd)+'"><meta property="og:type" content="website">');return h}
+function openStudentTab(c){try{const url=URL.createObjectURL(new Blob([studentFileHtml(c)],{type:'text/html;charset=utf-8'}));const w=window.open(url,'_blank');if(!w)say('O navegador bloqueou a nova aba. Use “Baixar arquivo da campanha” e abra o arquivo baixado.')}catch(e){say('Não foi possível abrir a nova aba aqui. Use “Baixar arquivo da campanha”.')}}
+async function saveStudentFile(c){const html=studentFileHtml(c),slug=(c.title||'campanha').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40)||'campanha',name='campanha-'+slug+'.html';
+  try{const d=window.claude?await window.claude.use('downloads'):null;
+    if(d){await d.save({filename:name,data:html});say('Arquivo “'+name+'” salvo. Envie esse arquivo pelo WhatsApp: o aluno toca nele e a campanha abre.');return}
+    const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));a.download=name;document.body.appendChild(a);a.click();a.remove();
+    say('Arquivo “'+name+'” baixado. Envie esse arquivo pelo WhatsApp: o aluno toca nele e a campanha abre.')}
+  catch(e){if(!e||e.code!=='declined')say('Não foi possível baixar o arquivo aqui. Abra o index.html direto no navegador e tente de novo.')}}
+function linkNote(){return baseUrl()?'Link público preparado para o endereço informado.':'Para gerar um link que funcione para os alunos, publique este HTML em um endereço HTTPS (por exemplo, Netlify) e informe o endereço público acima.'}
+function linkProblem(){return baseUrl()?'':'Link público não gerado: publique o arquivo em um endereço HTTPS e cole o endereço do site no campo “Endereço onde esta página será publicada”. Um endereço file:// ou localhost só funciona no seu dispositivo.'}
+function refreshBaseNote(){const n=$('baseNote');if(!n)return;const typed=($('baseUrl').value||'').trim();const b=baseUrl();n.textContent=b?'✔ Endereço público dos links: '+b:(typed?'✖ Informe um endereço público válido começando com https:// ou http://':'Cole aqui o endereço HTTPS depois de publicar o site.');n.style.color=b?'#326f56':'#b74e5b'}
+function campCard(c){const n=data.ideas.filter(i=>i.campaignId===c.id).length,arq=c.active===false;
+  return `<article class="item" style="border-top:4px solid ${esc(c.colorPrimary||'#d96e9f')}"><div class="itop"><span class="badge ${arq?'o':''}">${arq?'Arquivada':'Ativa'}</span><span class="smalltext">${esc(c.audience||'Toda a escola')}</span></div>
+  <h3>${esc(c.emoji||'🌷')} ${esc(c.title)}</h3><p>${esc(c.desc)}</p>
+  <div class="smalltext">${c.start?'Início: '+fdate(c.start)+' · ':''}${c.end?'Fim: '+fdate(c.end)+' · ':''}${n} ideia(s)</div>
+  ${c.pageUrl?`<div class="smalltext" style="margin-top:4px;word-break:break-all">🌐 ${esc(c.pageUrl)}</div>`:''}<div class="row"><button class="main small" data-act="open" data-id="${c.id}">Abrir página</button><button class="secondary small" data-act="tab" data-id="${c.id}">Abrir em nova aba</button><button class="secondary small" data-act="copy" data-id="${c.id}">Copiar link</button><button class="secondary small" data-act="file" data-id="${c.id}">Baixar arquivo</button>${c.pageFile&&ghReady()?`<button class="secondary small" data-act="republish" data-id="${c.id}">Atualizar página</button>`:''}<button class="secondary small" data-act="toggle" data-id="${c.id}">${arq?'Reativar':'Arquivar'}</button></div></article>`}
+function copyText(t){if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(()=>say('Link copiado!')).catch(()=>showLink(t));else showLink(t)}
+
+$('allCampaigns').addEventListener('click',e=>{const b=e.target.closest('button[data-act]');if(!b)return;const c=data.campaigns.find(x=>x.id===b.dataset.id);if(!c)return;
+  if(b.dataset.act==='open')showCampaign(c.id);
+  if(b.dataset.act==='file'){saveStudentFile(c);return}
+  if(b.dataset.act==='tab'){openStudentTab(c);return}
+  if(b.dataset.act==='copy'){const w=c.pageUrl?'':linkProblem();if(w)say(w);else copyText(linkFor(c))}
+  if(b.dataset.act==='republish'){say('Atualizando a página no GitHub... aguarde.').then(()=>{});publishCampaign(c).then(()=>{renderAll();say('Página atualizada! As mudanças aparecem em 1 a 2 minutos.')}).catch(err=>say('Não consegui atualizar: '+err.message));return}
+  if(b.dataset.act==='toggle'){c.active=c.active===false;save();if(c.pageFile&&ghReady())publishCampaign(c).then(()=>say('Página atualizada no GitHub. Em 1 a 2 minutos ela aparece como '+(c.active===false?'encerrada':'ativa')+' para os alunos.')).catch(err=>say('A campanha mudou aqui, mas não consegui atualizar a página: '+err.message))}});
+
+$('createForm').addEventListener('submit',ev=>ev.preventDefault());
+const stC=(m,bad)=>{const el=$('createStatus');el.textContent=m;el.style.color=bad?'#b74e5b':'#326f56'};
+$('btnCreate').addEventListener('click',async()=>{const e={preventDefault(){},target:$('createForm')};const btn=$('btnCreate'),file=$('cFile').files[0];stC('Verificando os campos...');
+  const falta=[['cTitle','Nome da campanha'],['cDesc','Apresentação e objetivo']].filter(([i])=>!$(i).value.trim());
+  if(falta.length){stC('✖ Preencha: '+falta.map(f=>f[1]).join(' e ')+'.',true);await say('Antes de criar, preencha: '+falta.map(f=>f[1]).join(' e ')+'. Os campos estão no início do formulário.');const el=$(falta[0][0]);try{el.scrollIntoView({behavior:'smooth',block:'center'})}catch(_){}el.focus();return}
+  if(file&&file.size>2*1024*1024){stC('✖ O arquivo de apoio passa de 2 MB.',true);say('O arquivo de apoio deve ter no máximo 2 MB.');return}
+  btn.disabled=true;btn.textContent='Criando campanha...';stC('Criando campanha...');
+  try{let fileData='';
+    if(file)fileData=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result));r.onerror=()=>rej(new Error('leitura'));r.readAsDataURL(file)});
+    const c={id:uid(),title:$('cTitle').value.trim(),emoji:$('cEmojiCustom').value.trim()||$('cEmoji').value||'🌷',desc:$('cDesc').value.trim(),start:$('cStart').value,end:$('cEnd').value,audience:$('cAudience').value,voting:$('cVote').value==='yes',rules:$('cRules').value.trim(),whats:$('cWhats').value.replace(/\D/g,''),colorPrimary:$('cColorPrimary').value,colorBg:$('cColorBg').value,fileName:file?file.name:'',fileData,fileType:file?file.type:'',created:new Date().toISOString(),active:true};
+    data.campaigns.push(c);
+    try{save()}catch(err){data.campaigns=data.campaigns.filter(x=>x.id!==c.id);stC('✖ Não foi possível salvar (arquivo grande demais para o navegador).',true);say('Não foi possível salvar. Tente um arquivo menor (até 2 MB) ou crie a campanha sem arquivo.');return}
+    let pubErr='';if(ghReady()){stC('Publicando a página da campanha no GitHub...');try{await publishCampaign(c);renderAll()}catch(err){pubErr=err&&err.message?err.message:'erro desconhecido'}}
+    lastLink=linkFor(c);lastCampId=c.id;$('linkOutput').value=lastLink;$('newLink').classList.remove('hidden');{const w=c.pageUrl?'':linkNote(),lw=$('linkWarn');lw.textContent=w?'⚠ '+w:'';lw.classList.toggle('hidden',!w)}e.target.reset();updateColorPreview();$('cFileStatus').textContent='Nenhum arquivo selecionado.';try{$('newLink').scrollIntoView({behavior:'smooth',block:'center'})}catch(_){}const pubOk=!!c.pageUrl&&!pubErr;$('liveStatus').textContent='';if(pubOk)watchLive(c.pageUrl);
+    stC(pubOk?'✔ Campanha criada e página publicada! O GitHub leva 1 a 2 minutos para colocá-la no ar.':'✔ Campanha criada! O link está logo abaixo e ela aparece em “Minhas campanhas”.'+(pubErr?' ⚠ A publicação automática falhou: '+pubErr:''),!!pubErr);
+    if(!memOnly)say(pubOk?'Campanha criada e página publicada no GitHub! Ela entra no ar em 1 a 2 minutos. O link está logo abaixo.':'Campanha criada! O link está logo abaixo do botão e ela já aparece em “Minhas campanhas”.'+(pubErr?' Mas a publicação automática falhou: '+pubErr:''))}
+  catch(err){console.error(err);stC('✖ Não foi possível criar: '+(err&&err.message?err.message:'erro desconhecido'),true);say('Não foi possível criar a campanha: '+(err&&err.message?err.message:'erro desconhecido')+'. Tente sem o arquivo de apoio.')}
+  finally{btn.disabled=false;btn.textContent='Criar campanha e gerar link →'}});
+$('btnCopyNew').onclick=()=>{const w=linkProblem();if(w)say(w);else copyText($('linkOutput').value)};
+$('btnTabNew').onclick=()=>{const c=data.campaigns.find(x=>x.id===lastCampId)||data.campaigns[data.campaigns.length-1];if(c)openStudentTab(c)};
+$('btnFileNew').onclick=()=>{const c=data.campaigns.find(x=>x.id===lastCampId)||data.campaigns[data.campaigns.length-1];if(c)saveStudentFile(c)};
+$('btnOpenNew').onclick=()=>{const c=data.campaigns.find(x=>linkFor(x)===lastLink)||data.campaigns[data.campaigns.length-1];if(c)showCampaign(c.id)};
+$('cFile').addEventListener('change',()=>{const f=$('cFile').files[0];$('cFileStatus').textContent=f?'Arquivo selecionado: '+f.name+' ('+Math.ceil(f.size/1024)+' KB)':'Nenhum arquivo selecionado.'});
+function updateColorPreview(){const p=$('cColorPrimary').value,b=$('cColorBg').value;$('colorSample').style.background=p;$('colorPreview').style.background='linear-gradient(120deg,'+b+',#f4f0ff 65%,#effaf4)';$('colorPreview').style.borderTop='4px solid '+p}
+$('cColorPrimary').addEventListener('input',updateColorPreview);$('cColorBg').addEventListener('input',updateColorPreview);
+
+/* ---------- página dos alunos ---------- */
+function notFoundCampaign(encerrada){showOnly('publicView');currentCampaign=null;
+  $('publicCampaign').innerHTML='<div class="card"><h3>'+(encerrada?'Campanha encerrada':'Campanha não encontrada')+'</h3><p class="ex">'+(encerrada?'Esta campanha não está recebendo participações no momento.':'Este link não é válido ou a campanha não está disponível. Peça à escola o link atualizado.')+'</p></div>';
+  const g=$('ideaForm').closest('.grid');if(g)g.classList.add('hidden')}
+function enterStudentMode(){studentMode=true;['gate','adminView','btnExit'].forEach(i=>{const el=$(i);if(el)el.remove()})}
+function showCampaign(cid,fromRoute){const c=data.campaigns.find(x=>x.id===cid);
+  if(studentMode&&(!c||c.active===false)){notFoundCampaign(c&&c.active===false);return}
+  if(!c){if(fromRoute){showOnly('gate')}say('Campanha não encontrada neste navegador.');return}
+  openCampaign(c,fromRoute)}
+function openCampaign(c,fromRoute){
+  currentCampaign=c;const pv=$('publicView');pv.style.setProperty('--cp',c.colorPrimary||'#d96e9f');pv.style.setProperty('--cb',c.colorBg||'#fff0f6');
+  try{renderCampaignHtml(c)}catch(err){console.error(err)}
+  if(!fromRoute&&!c.remote)setHash('#campanha='+encodeURIComponent(c.id));
+  showOnly('publicView');window.scrollTo(0,0);{const be=$('btnExit');if(be){be.classList.toggle('hidden',!adminUnlocked);if(adminUnlocked)be.textContent='Voltar ao painel'}}{const g=$('ideaForm').closest('.grid');if(g)g.classList.remove('hidden')}
+  $('ideaImage').closest('.field').classList.toggle('hidden',!!c.remote);$('btnIdea').textContent=c.remote?'Enviar pelo WhatsApp →':'Enviar para análise →';
+  $('ideaCampaignId').value=c.id;$('ideaSuccess').classList.add('hidden');renderPublicIdeas()}
+function openRemote(o){if(o&&o.x){notFoundCampaign(true);return}const ok=x=>/^#[0-9a-f]{6}$/i.test(x||'');
+  openCampaign({id:String(o.id||''),title:o.t||'Campanha',emoji:o.e||'🌷',desc:o.d||'',start:o.a||'',end:o.z||'',audience:o.u||'Toda a escola',rules:o.r||'',colorPrimary:ok(o.p)?o.p:'#d96e9f',colorBg:ok(o.g)?o.g:'#fff0f6',whats:String(o.w||''),voting:false,remote:true,ideasRemote:Array.isArray(o.i)?o.i:[]},true)}
+function openFromHash(h){try{openRemote(b64d(h.slice(2)))}catch(e){notFoundCampaign(false)}}
+function renderCampaignHtml(c){
+  const img=(c.fileData&&(c.fileType||'').startsWith('image/'))?`<img src="${c.fileData}" alt="Material de apoio da campanha" style="display:block;width:100%;max-width:760px;max-height:520px;object-fit:contain;object-position:left;border-radius:12px;margin:10px 0">`:'';
+  const pdf=(c.fileData&&(c.fileType||'').includes('pdf'))?`<iframe title="Visualização do PDF de apoio" src="${c.fileData}" style="width:100%;height:600px;border:1px solid var(--line);border-radius:12px;margin:10px 0"></iframe>`:'';
+  const btns=c.fileData?`<div class="row"><a class="btn" href="${c.fileData}" target="_blank" rel="noopener">Abrir arquivo ↗</a><a class="btn secondary" href="${c.fileData}" download="${esc(c.fileName||'material-de-apoio')}">Baixar arquivo ↓</a></div>`:'';
+  const apoio=(c.fileData||c.fileName)?`<div class="card" style="margin-top:14px"><h3>📎 Material de apoio da escola</h3><p class="muted">${esc(c.fileName||'Arquivo de apoio')}</p>${!c.fileData?'<div class="notice">O nome foi salvo, mas o conteúdo do arquivo não está nesta campanha. Anexe o material novamente pelo painel administrativo.</div>':''}${img}${pdf}${btns}</div>`:'';
+  $('publicCampaign').innerHTML=`<div class="hero" style="background:linear-gradient(120deg,${esc(c.colorBg||'#fff0f6')},#f4f0ff 65%,#effaf4);border-top:5px solid ${esc(c.colorPrimary||'#d96e9f')}"><span class="eyebrow" style="color:${esc(c.colorPrimary||'#ba5d8a')}">Escola Estadual Heloíza Therezinha Murbach Lacava · Aluno protagonista</span><h1>${esc(c.emoji||'🌷')} ${esc(c.title)}</h1><p>${esc(c.desc)}</p><div class="pills"><span class="pill">👥 ${esc(c.audience||'Toda a escola')}</span>${c.end?`<span class="pill">📅 Até ${fdate(c.end)}</span>`:''}</div></div>
+  ${c.rules?`<div class="notice"><b>Orientações:</b> ${esc(c.rules)}</div>`:''}
+  <div class="smalltext">${c.remote?'As ideias são enviadas pelo WhatsApp da escola e a votação é conduzida pela própria escola.':c.voting?'A votação está disponível para as ideias aprovadas.':'A votação está desativada nesta campanha.'}</div>${apoio}`}
+$('btnExit').onclick=()=>{if(!$('publicView').classList.contains('hidden')&&adminUnlocked){$('btnExit').textContent='Sair da área restrita';setHash('#escola');showOnly('adminView');renderAll();window.scrollTo(0,0)}else goHome()};
+
+function imageToCompact(file){return new Promise((res,rej)=>{const r=new FileReader();r.onerror=()=>rej(new Error('leitura'));r.onload=()=>{const im=new Image();im.onerror=()=>rej(new Error('formato'));im.onload=()=>{const s=Math.min(1,1200/Math.max(im.width,im.height)),cv=document.createElement('canvas');cv.width=Math.max(1,Math.round(im.width*s));cv.height=Math.max(1,Math.round(im.height*s));cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height);res(cv.toDataURL('image/jpeg',.72))};im.src=String(r.result)};r.readAsDataURL(file)})}
+function sendViaWhats(){const c=currentCampaign,idea={c:c.id,ct:c.title,n:$('ideaName').value.trim().slice(0,60),s:$('ideaClass').value.trim().slice(0,40),t:$('ideaTitle').value.trim().slice(0,100),b:$('ideaBody').value.trim().slice(0,1500)};
+  const code='[[IDEIA:'+b64e(idea)+']]';
+  const msg='Ideia para a campanha "'+c.title+'"\nNome: '+idea.n+'\nSala/turma: '+idea.s+'\nTítulo: '+idea.t+'\n\n'+idea.b+'\n\n'+code;
+  let num=(c.whats||'').replace(/\D/g,'');if(num&&num.length<=11)num='55'+num;
+  const url='https://wa.me/'+num+'?text='+encodeURIComponent(msg);
+  const w=window.open(url,'_blank','noopener');if(!w)location.href=url;
+  $('ideaForm').reset();$('ideaCampaignId').value=c.id;
+  $('ideaSuccess').textContent='O WhatsApp foi aberto com a sua ideia pronta. Toque em enviar para entregá-la à escola. Obrigado por participar! 🌷';$('ideaSuccess').classList.remove('hidden')}
+$('ideaForm').addEventListener('submit',async e=>{e.preventDefault();const cid=$('ideaCampaignId').value;
+  const falta=[['ideaName','seu nome'],['ideaClass','sala/turma'],['ideaTitle','título da ideia'],['ideaBody','a explicação da proposta']].filter(([i])=>!$(i).value.trim());
+  if(falta.length){await say('Antes de enviar, preencha: '+falta.map(f=>f[1]).join(', ')+'.');$(falta[0][0]).focus();return}if(currentCampaign&&currentCampaign.remote){sendViaWhats();return}if(!data.campaigns.find(c=>c.id===cid)){say('Campanha não encontrada. Abra novamente o link da campanha.');return}
+  const btn=$('btnIdea');btn.disabled=true;btn.textContent='Enviando...';
+  try{const f=$('ideaImage').files[0];if(f&&f.size>5*1024*1024){say('A imagem original deve ter no máximo 5 MB.');return}
+    const image=f?await imageToCompact(f):'';
+    const idea={id:'idea-'+uid(),campaignId:cid,name:$('ideaName').value.trim(),classroom:$('ideaClass').value.trim(),title:$('ideaTitle').value.trim(),body:$('ideaBody').value.trim(),image,status:'pending',created:new Date().toISOString()};
+    data.ideas.push(idea);
+    try{save()}catch(err){data.ideas=data.ideas.filter(i=>i.id!==idea.id);say('O navegador ficou sem espaço para salvar esta ideia. Tente uma imagem menor ou sem imagem.');return}
+    e.target.reset();$('ideaCampaignId').value=cid;$('ideaSuccess').textContent='Sua ideia foi enviada! Ela aparecerá no mural para todos depois que a escola aprovar. Obrigado por participar! 🌷';$('ideaSuccess').classList.remove('hidden')}
+  catch(err){say('Não foi possível enviar a ideia. Tente outra imagem ou envie sem imagem.')}
+  finally{btn.disabled=false;btn.textContent='Enviar para análise →'}});
+
+const voteCount=iid=>data.votes.filter(v=>v.ideaId===iid).length;
+function visitorKey(){const k='vivaVisitorKey';let v=store.get(k);if(!v){v='visitor-'+Math.random().toString(36).slice(2);store.set(k,v)}return v}
+const hasVoted=iid=>data.votes.some(v=>v.ideaId===iid&&v.voter===visitorKey());
+function renderPublicIdeas(){if(!currentCampaign)return;
+  if(currentCampaign.remote){const L=currentCampaign.ideasRemote||[];
+    $('publicIdeas').innerHTML=L.length?L.map(i=>`<article class="item"><div class="itop"><div><h3>💡 ${esc(i.t)}</h3><div class="smalltext">Por ${esc(i.n)} · Sala/turma: ${esc(i.s||'Não informada')}</div></div><span class="badge">Publicada</span></div><p>${esc(i.b)}</p></article>`).join(''):'<div class="empty">As ideias aprovadas pela escola aparecerão aqui. Seja a primeira pessoa a enviar uma proposta! 💗</div>';return}
+  const ideas=data.ideas.filter(i=>i.campaignId===currentCampaign.id&&i.status==='approved').sort((a,b)=>voteCount(b.id)-voteCount(a.id));
+  $('publicIdeas').innerHTML=ideas.length?ideas.map(i=>`<article class="item"><div class="itop"><div><h3>💡 ${esc(i.title)}</h3><div class="smalltext">Por ${esc(i.name)} · Sala/turma: ${esc(i.classroom||'Não informada')}</div></div><span class="badge">Publicada</span></div><p>${esc(i.body)}</p>${i.image?`<img src="${i.image}" alt="Imagem enviada por ${esc(i.name)}" style="display:block;max-width:100%;max-height:420px;object-fit:contain;border-radius:12px;margin-top:10px;border:1px solid var(--line)">`:''}<div class="ifoot"><span class="smalltext">${voteCount(i.id)} voto(s)</span>${currentCampaign.voting?`<div class="vote"><button data-vote="${i.id}" class="${hasVoted(i.id)?'voted':''}">${hasVoted(i.id)?'✓ Votou':'♡ Votar'}</button></div>`:'<span class="smalltext">Votação desativada</span>'}</div></article>`).join(''):'<div class="empty">As ideias aprovadas aparecerão aqui. Seja a primeira pessoa a enviar uma proposta! 💗</div>'}
+$('publicIdeas').addEventListener('click',e=>{const b=e.target.closest('button[data-vote]');if(!b)return;const iid=b.dataset.vote;
+  if(hasVoted(iid)){say('Neste navegador, você já votou nesta ideia.');return}
+  data.votes.push({ideaId:iid,voter:visitorKey(),created:new Date().toISOString()});save()});
+
+/* ---------- moderação ---------- */
+function renderModeration(){const pend=data.ideas.filter(i=>i.status==='pending');
+  let h=pend.length?pend.map(i=>{const c=data.campaigns.find(c=>c.id===i.campaignId);
+    return `<article class="item"><span class="badge o">Aguardando revisão</span><h3>💡 ${esc(i.title)}</h3><div class="smalltext">Por ${esc(i.name)} · Sala/turma: ${esc(i.classroom||'Não informada')} · Campanha: ${esc(c?c.title:'não encontrada')}</div><p>${esc(i.body)}</p>${i.image?`<img src="${i.image}" alt="Imagem enviada com a ideia" style="display:block;max-width:100%;max-height:360px;object-fit:contain;border-radius:12px;margin-top:10px;border:1px solid var(--line)">`:''}<div class="row"><button class="main small" data-mod="approved" data-id="${i.id}">✓ Aprovar e publicar</button><button class="danger small" data-mod="rejected" data-id="${i.id}">Recusar</button></div></article>`}).join(''):'<div class="empty">Tudo em dia! Não há ideias aguardando revisão.</div>';
+  const done=data.ideas.filter(i=>i.status!=='pending');
+  if(done.length)h+='<h3 style="margin:14px 0 0">Decisões anteriores</h3>'+done.slice().reverse().map(i=>`<article class="item"><div class="itop"><h3>${esc(i.title)}</h3><span class="badge ${i.status==='approved'?'':'o'}">${i.status==='approved'?'Aprovada':'Recusada'}</span></div><p>${esc(i.body)}</p><div class="row" style="margin-top:6px"><button class="secondary small" data-mod="pending" data-id="${i.id}">Voltar para revisão</button></div></article>`).join('');
+  $('moderationList').innerHTML=h}
+$('btnImp').addEventListener('click',()=>{const st=$('impStatus');let novas=0,rep=0,sem=0,inval=0;
+  const found=[...$('impText').value.matchAll(/\[\[IDEIA:([A-Za-z0-9_-]+)\]\]/g)];
+  if(!found.length){st.style.color='#b74e5b';st.textContent='✖ Não encontrei nenhuma ideia nesse texto. Cole a mensagem completa, com a linha [[IDEIA:...]].';return}
+  found.forEach(m=>{const code=m[1];if(data.ideas.some(i=>i.code===code)){rep++;return}
+    let o;try{o=b64d(code)}catch(e){inval++;return}
+    if(!data.campaigns.some(c=>c.id===o.c)){sem++;return}
+    data.ideas.push({id:'idea-'+uid(),campaignId:o.c,name:String(o.n||'').slice(0,60),classroom:String(o.s||'').slice(0,40),title:String(o.t||'').slice(0,100),body:String(o.b||'').slice(0,1500),image:'',status:'pending',created:new Date().toISOString(),code});novas++});
+  try{save()}catch(e){}
+  st.style.color=novas?'#326f56':'#b74e5b';
+  st.textContent=(novas?'✔ '+novas+' ideia(s) importada(s) e aguardando sua revisão abaixo. ':'✖ Nenhuma ideia nova. ')+(rep?rep+' já tinha(m) sido importada(s). ':'')+(sem?sem+' é(são) de uma campanha que não existe neste navegador. ':'')+(inval?inval+' com código inválido.':'');
+  if(novas)$('impText').value=''});
+$('moderationList').addEventListener('click',e=>{const b=e.target.closest('button[data-mod]');if(!b)return;const i=data.ideas.find(x=>x.id===b.dataset.id);if(i){i.status=b.dataset.mod;save();autoRepublish(i.campaignId)}});
+
+/* ---------- painel ---------- */
+function mk(id,cfg){charts[id]?.destroy();const el=$(id);if(!el)return;if(typeof Chart==='undefined'){el.parentNode.textContent='Os gráficos precisam de internet para carregar a biblioteca Chart.js.';return}charts[id]=new Chart(el,cfg)}
+const kpi=(cls,v,l)=>`<div class="card kpi ${cls}"><div class="v">${v}</div><div class="l">${l}</div></div>`;
+function campStats(c){const ideas=data.ideas.filter(i=>i.campaignId===c.id),ids=new Set(ideas.map(i=>i.id));
+  return{c,total:ideas.length,ap:ideas.filter(i=>i.status==='approved').length,pe:ideas.filter(i=>i.status==='pending').length,re:ideas.filter(i=>i.status==='rejected').length,votos:data.votes.filter(v=>ids.has(v.ideaId)).length}}
+function renderPanel(){
+  const sel=$('fCamp'),cur=sel.value;
+  sel.innerHTML='<option value="">Todas as campanhas</option>'+data.campaigns.map(c=>`<option value="${c.id}">${esc(c.emoji||'')} ${esc(c.title)}</option>`).join('');
+  if(data.campaigns.some(c=>c.id===cur))sel.value=cur;
+  const camps=sel.value?data.campaigns.filter(c=>c.id===sel.value):data.campaigns,S=camps.map(campStats);
+  const sum=k=>S.reduce((a,s)=>a+s[k],0),total=sum('total'),ap=sum('ap'),pe=sum('pe'),re=sum('re'),votos=sum('votos');
+  const ativas=camps.filter(c=>c.active!==false).length;
+  $('kpis').innerHTML=kpi('menta',ativas+' <span style="font-size:15px;font-weight:600">de '+camps.length+'</span>','Campanhas ativas')+kpi('lilas',total,'Ideias recebidas')+kpi('pessego',pe,'Ideias aguardando revisão')+kpi('rosa',votos,'Votos nas ideias aprovadas');
+  const best=k=>[...S].sort((a,b)=>b[k]-a[k])[0],bi=S.length?best('total'):null,bv=S.length?best('votos'):null;
+  $('hilo').innerHTML=S.length?kpi('menta',esc(bi.c.title),'Mais ideias: '+bi.total)+kpi('lilas',esc(bv.c.title),'Mais votos: '+bv.votos)+kpi('pessego',(ap+re)?fmt(ap/(ap+re)*100)+'%':'—','Taxa de aprovação (aprovadas ÷ analisadas)'):kpi('lilas','—','Ainda não há campanhas');
+  const labels=S.map(s=>(s.c.emoji||'')+' '+s.c.title),base={responsive:true,maintainAspectRatio:false};
+  mk('c1',{type:'bar',data:{labels,datasets:[{label:'Recebidas',data:S.map(s=>s.total),backgroundColor:'#b9a2dd'},{label:'Aprovadas',data:S.map(s=>s.ap),backgroundColor:'#7fc6a8'},{label:'Aguardando',data:S.map(s=>s.pe),backgroundColor:'#f4b98f'}]},options:{...base,plugins:{legend:{display:true}},scales:{y:{beginAtZero:true,ticks:{precision:0}}}}});
+  mk('c2',{type:'bar',data:{labels,datasets:[{label:'Votos',data:S.map(s=>s.votos),backgroundColor:'#d96e9f'}]},options:{...base,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{precision:0}}}}});
+  const rk=[...S].sort((a,b)=>b.total-a.total||b.votos-a.votos);
+  $('tbCamp').innerHTML=rk.length?'<thead><tr><th>#</th><th>Campanha</th><th>Situação</th><th>Recebidas</th><th>Aprovadas</th><th>Aguardando</th><th>Recusadas</th><th>Votos</th></tr></thead><tbody>'+rk.map((s,i)=>`<tr><td>${i+1}</td><td>${esc(s.c.emoji||'')} ${esc(s.c.title)}</td><td>${s.c.active===false?'Arquivada':'Ativa'}</td><td>${s.total}</td><td class="ok">${s.ap}</td><td>${s.pe}</td><td>${s.re}</td><td>${s.votos}</td></tr>`).join('')+'</tbody>':'<tbody><tr><td>Ainda não há campanhas.</td></tr></tbody>';
+  const ids=new Set(camps.map(c=>c.id)),top=data.ideas.filter(i=>i.status==='approved'&&ids.has(i.campaignId)).map(i=>({i,v:voteCount(i.id)})).sort((a,b)=>b.v-a.v).slice(0,10);
+  $('tbTop').innerHTML=top.length?'<thead><tr><th>#</th><th>Ideia</th><th>Autor</th><th>Sala/turma</th><th>Campanha</th><th>Votos</th></tr></thead><tbody>'+top.map((t,n)=>{const c=data.campaigns.find(c=>c.id===t.i.campaignId);return`<tr><td>${n+1}</td><td>${esc(t.i.title)}</td><td>${esc(t.i.name)}</td><td>${esc(t.i.classroom||'—')}</td><td>${esc(c?c.title:'—')}</td><td class="ok">${t.v}</td></tr>`}).join('')+'</tbody>':'<tbody><tr><td>Nenhuma ideia aprovada ainda.</td></tr></tbody>'}
+$('fCamp').addEventListener('change',renderPanel);
+
+/* ---------- metas ---------- */
+function metaBase(){const n=data.campaigns.length,total=data.ideas.length,ap=data.ideas.filter(i=>i.status==='approved').length,an=data.ideas.filter(i=>i.status!=='pending').length;
+  return{ideias:n?total/n:null,votos:ap?data.votes.filter(v=>data.ideas.some(i=>i.id===v.ideaId&&i.status==='approved')).length/ap:null,anal:total?an/total*100:null}}
+function renderMetas(){const at=metaBase(),real=data.campaigns.length>0,ph={ideias:10,votos:5,anal:100};
+  $('metaNote').innerHTML=real?'<b>Dados reais:</b> o resultado atual vem das campanhas e ideias registradas nesta página.':'<b>Exemplo ilustrativo:</b> ainda não há campanhas. Crie a primeira, digite suas metas ou toque em “Sugerir metas”.';
+  [['ideias',1,'',true],['votos',1,'',true],['anal',1,'%',true]].forEach(([k,d,u])=>{const v=at[k],el=$('m_'+k);
+    $('a_'+k).textContent=v==null?'—':fmt(v)+(u?u:'');el.placeholder=String(ph[k]);
+    const m=el.value===''?null:parseFloat(el.value);
+    $('s_'+k).innerHTML=m==null||v==null?'—':v>=m?'<span class="ok">✔ Meta atingida</span>':'<span class="bad">Faltam '+fmt(m-v)+(u?' p.p.':'')+'</span>';
+    store.set('apm_'+k,el.value)})}
+['ideias','votos','anal'].forEach(k=>{const v=store.get('apm_'+k);if(v)$('m_'+k).value=v;$('m_'+k).addEventListener('input',renderMetas)});
+$('btnMeta').onclick=()=>{const at=metaBase();
+  $('m_ideias').value=at.ideias!=null?Math.ceil(at.ideias*1.2+1):10;
+  $('m_votos').value=at.votos!=null?Math.ceil(at.votos*1.2+1):5;
+  $('m_anal').value=100;renderMetas()};
+
+/* ---------- geral ---------- */
+function renderAll(){if(studentMode){renderPublicIdeas();return}
+renderPanel();$('allCampaigns').innerHTML=data.campaigns.length?data.campaigns.slice().reverse().map(campCard).join(''):'<div class="empty">Nenhuma campanha criada ainda. Crie a primeira na seção acima!</div>';renderModeration();renderMetas();renderPublicIdeas()}
+$('btnEnter').onclick=enterAdmin;
+
+[['anoLet','apkpi_ano'],['resp','apkpi_resp']].forEach(([id,k])=>{const el=$(id),v=store.get(k);if(v)el.value=v;el.addEventListener('input',()=>store.set(k,el.value))});
+if(!$('anoLet').value)$('anoLet').value=new Date().getFullYear();
+$('atual').value=new Date().toLocaleDateString('pt-BR');
+
+const links=[...document.querySelectorAll('.sidebar a')];
+links.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=$((a.getAttribute('href')||'').slice(1));if(!t)return;try{t.scrollIntoView({behavior:'smooth',block:'start'})}catch(_){t.scrollIntoView()}links.forEach(x=>x.classList.toggle('active',x===a))}));
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-30% 0px -60% 0px'});
+  ['sobre','painel','criar','campanhas','moderar','metas','acoes','obs'].forEach(i=>{const el=$(i);if(el)io.observe(el)})}
+
+window.addEventListener('hashchange',()=>{const h=decodeURIComponent(location.hash.slice(1));if(h.startsWith('c=')){openFromHash(h);if(studentMode)studentHash=location.hash}else if(h.startsWith('campanha='))showCampaign(h.slice(9),true);else if(studentMode&&studentHash)setHash(studentHash)});
+window.addEventListener('popstate',()=>{const h=decodeURIComponent(location.hash.slice(1));if(h.startsWith('c='))openFromHash(h);else if(h.startsWith('campanha='))showCampaign(h.slice(9),true);else if(studentMode){if(studentHash)setHash(studentHash)}else if(adminUnlocked){if(h==='escola'){showOnly('adminView');renderAll()}else if(h===''){showOnly('gate')}/* outras âncoras do menu: só rolam a página, sem sair do painel */}else{showOnly('gate')}});
+updateColorPreview();renderAll();
+{const host=location.hostname,seg=location.pathname.split('/')[1]||'';
+ const d={Owner:/\.github\.io$/i.test(host)?host.split('.')[0]:'',Repo:/\.github\.io$/i.test(host)?(seg&&!/\.[a-z0-9]+$/i.test(seg)?seg:host):'',Branch:'main',Token:''};
+ ['Owner','Repo','Branch','Token'].forEach(n=>{const el=$('gh'+n);if(!el)return;const v=store.get('apGh'+n)||d[n];if(v)el.value=v});
+ const tgt=()=>{const k=ghCfg();$('ghTarget').textContent=(k.owner&&k.repo)?k.owner+'/'+k.repo+' (branch '+k.branch+')':'preencha em “Alterar...”'};
+ ['Owner','Repo','Branch'].forEach(n=>$('gh'+n).addEventListener('input',()=>{store.set('apGh'+n,$('gh'+n).value.trim());tgt()}));tgt();
+ $('btnGhSave').onclick=async()=>{const st=$('ghStatus');
+  $('ghToken').value=$('ghToken').value.replace(/[\s"'“”]/g,'');
+  ['Owner','Repo','Branch','Token'].forEach(n=>store.set('apGh'+n,$('gh'+n).value.trim()));tgt();
+  if(!ghCfg().token){st.style.color='#b74e5b';st.textContent='✖ Cole o token do GitHub no campo acima.';return}
+  if(!ghCfg().owner||!ghCfg().repo){st.style.color='#b74e5b';st.textContent='✖ Não consegui descobrir o usuário e o repositório. Abra “Alterar usuário, repositório ou branch” e preencha.';return}
+  st.style.color='#817887';st.textContent='Conectando...';
+  try{const r=await ghFetch('GET',ghRepoUrl());
+   if(!r.ok){st.style.color='#b74e5b';st.textContent='✖ '+ghMsg(r);return}
+   if(r.json&&r.json.default_branch){store.set('apGhBranch',r.json.default_branch);$('ghBranch').value=r.json.default_branch;tgt()}
+   if(r.json&&r.json.permissions&&r.json.permissions.push===false){st.style.color='#b74e5b';st.textContent='✖ Conectou, mas o token só tem leitura. Gere outro com Contents: Read and write.';return}
+   st.style.color='#326f56';st.textContent='✔ Conectado a '+ghCfg().owner+'/'+ghCfg().repo+'. Agora é só criar a campanha: a página é publicada sozinha.';renderAll()}
+  catch(e){let fixed=false;
+   try{if('serviceWorker' in navigator&&navigator.serviceWorker.controller){const rs=await navigator.serviceWorker.getRegistrations();await Promise.all(rs.map(x=>x.unregister()));if(window.caches){const ks=await caches.keys();await Promise.all(ks.map(k=>caches.delete(k)))}fixed=true}}catch(_){}
+   if(fixed){st.style.color='#a66a00';st.textContent='⚠ O cache do aplicativo estava bloqueando a conexão e eu limpei. Feche esta página, abra de novo e toque em “Conectar ao GitHub”.'}
+   else{st.style.color='#b74e5b';st.textContent='✖ Sem conexão com o GitHub ('+((e&&e.message)||'erro')+'). Confira a internet, se o token foi colado inteiro e se não há bloqueador de anúncios/VPN ligado.'}}};
+ $('btnGhClear').onclick=()=>{store.set('apGhToken','');$('ghToken').value='';const st=$('ghStatus');st.style.color='#817887';st.textContent='Token removido deste navegador.';renderAll()};
+ if(ghReady()){const st=$('ghStatus');st.style.color='#326f56';st.textContent='✔ Publicação automática configurada.'}}
+{const bu=store.get('apBaseUrl');if(bu&&$('baseUrl'))$('baseUrl').value=bu;if($('baseUrl'))$('baseUrl').addEventListener('input',()=>{store.set('apBaseUrl',$('baseUrl').value);refreshBaseNote()});refreshBaseNote()}
+{const h=decodeURIComponent(location.hash.slice(1));let qc='';try{qc=new URLSearchParams(location.search).get('c')||''}catch(_){}
+ if(window.__CAMPAIGN__){enterStudentMode();openFromHash('c='+window.__CAMPAIGN__)}
+ else if(qc){enterStudentMode();openFromHash('c='+qc)}
+ else if(h.startsWith('c=')){enterStudentMode();openFromHash(h);studentHash=location.hash}
+ else if(h.startsWith('campanha=')){enterStudentMode();showCampaign(h.slice(9),true);studentHash=location.hash}
+ else showOnly('gate')}
+</script>
+
+<script>
+if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+  window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js').catch(() => {}); });
+}
+</script>
+</body>
+</html>
